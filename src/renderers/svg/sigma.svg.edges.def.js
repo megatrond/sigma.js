@@ -56,9 +56,10 @@
      * @param  {configurable}             settings   The settings function.
      */
     update: function(edge, line, source, target, settings) {
-      var prefix = settings('prefix') || '';
+      var prefix = settings('prefix') || '',
+          size = edge[prefix + 'size'] === undefined ? edge[prefix + 'size'] : 1;
 
-      line.setAttributeNS(null, 'stroke-width', edge[prefix + 'size'] || 1);
+      line.setAttributeNS(null, 'stroke-width', size);
       line.setAttributeNS(null, 'x1', source[prefix + 'x']);
       line.setAttributeNS(null, 'y1', source[prefix + 'y']);
       line.setAttributeNS(null, 'x2', target[prefix + 'x']);
